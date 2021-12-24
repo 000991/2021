@@ -82,7 +82,7 @@ export default defineComponent({
     switch (md) {
       case '12-24':
         holiday.holidayName = '平安夜'
-        setStyleBackgroud(holiday.shengdan.background)
+        setStyleBackgroud(holiday.pingan.background)
         break
       case '12-25':
         holiday.holidayName = '圣诞'
