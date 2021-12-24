@@ -175,9 +175,9 @@ export default defineComponent({
 
     onMounted(() => {
       // 禁用右键
-      // window.oncontextmenu = function (e: Event) {
-      //   e.preventDefault()
-      // }
+      window.oncontextmenu = function (e: Event) {
+        e.preventDefault()
+      }
       document.body.addEventListener('click', clickToggcleClass, true)
     })
     return {
