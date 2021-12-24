@@ -1,29 +1,23 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+.DS_Store
+node_modules
+/dist
 
-# Precompiled Headers
-*.gch
-*.pch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# local env files
+.env.local
+.env.*.local
 
-# Fortran module files
-*.mod
-*.smod
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
