@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-// import './utils/snow.ts'
-// import utils from './utils/utils'
+import 'lib-flexible'
 
 createApp(App).mount('#app')

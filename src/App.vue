@@ -26,7 +26,7 @@
         :class="{ animate__zoomInDown: isShowAnimate }"
       >
         <div
-          class="animate__animated animate__infinite animate__delay-5s"
+          class="animate__animated animate__infinite animate__delay-2s"
           :class="{ animate__swing: isShowAnimate }"
         >
           {{ fullTitle }}
@@ -62,8 +62,8 @@ import 'animate.css'
 export default defineComponent({
   name: 'App',
   setup() {
-    const userName = utils.getQueryParam('user') || 'HAHA' // 用户名
-    const text = utils.getQueryParam('text') // 显示文字
+    const userName = utils.getQueryParam('user') || '王依寒' // 用户名
+    const text = utils.getQueryParam('text') // 从地址栏参数覆盖文字
     const userface = ref('')
     userface.value = require('./assets/1.jpg')
     // const bg1 = ref('')
@@ -112,13 +112,21 @@ export default defineComponent({
     }
     // 显示内容
     const fullTitle = computed(() => {
-      return text || holiday.holidayName + holiday.holidayGreetings
+      // return text || holiday.holidayName + holiday.holidayGreetings
+      if (holiday.holidayName === '圣诞') {
+        return '🎅' + holiday.holidayName + holiday.holidayGreetings + '🤶'
+      } else {
+        return holiday.holidayName + holiday.holidayGreetings
+      }
     })
     const emotions = utils.emotions()
     function setPageTitle() {
-      const a = utils.randomNum(0, 4)
-      const b = utils.randomNum(0, 4)
-      document.title = `${emotions[a]}${userName}，${fullTitle.value}${emotions[b]}`
+      const a = utils.randomNum(0, emotions.length - 1)
+      const b = utils.randomNum(0, emotions.length - 1)
+      const c = utils.randomNum(0, emotions.length - 1)
+      const d = utils.randomNum(0, emotions.length - 1)
+      // document.title = `${emotions[a]}${userName}，${fullTitle.value}${emotions[b]}`
+      document.title = `${emotions[a]}${userName}${emotions[c]}${holiday.holidayName}${emotions[d]}${holiday.holidayGreetings}${emotions[b]}`
       setTimeout(() => {
         setPageTitle()
       }, 1000)
@@ -133,11 +141,11 @@ export default defineComponent({
     type toxiaoArray = toxiao[]
     const texiaoList = ref<toxiaoArray>([])
     function setTexiao() {
-      // 如果数量超过30,就移除
-      if (texiaoList.value.length > 30) {
-        texiaoList.value = texiaoList.value.slice(10)
+      // 如果数量超过,就移除
+      if (texiaoList.value.length > 100) {
+        texiaoList.value = texiaoList.value.slice(80)
       }
-      const a = utils.randomNum(0, 4)
+      const a = utils.randomNum(0, emotions.length - 1)
       texiaoList.value.push({
         name: emotions[a],
         positionTop: utils.randomNum(-30, 0),
@@ -211,7 +219,7 @@ body {
 }
 .holiday {
   text-align: center;
-  font-size: 46px;
+  font-size: 80px;
 }
 .user {
   display: flex;
@@ -219,17 +227,17 @@ body {
   justify-items: center;
   padding-bottom: 20px;
   .user-photo {
-    width: 80px;
-    height: 80px;
+    width: 160px;
+    height: 160px;
     overflow: hidden;
-    margin-right: 20px;
+    margin-right: 30px;
     border-radius: 50%;
     img {
       width: 100%;
     }
   }
   .user-text {
-    line-height: 80px;
+    line-height: 160px;
     color: #351c75;
     // text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     text-shadow: 0 -6px 4px #ff0000, /*上*/ 4px -4px 4px #46ff00,
@@ -239,11 +247,10 @@ body {
   }
 }
 .zhufu {
-  // animation-duration: 1.5s;
   --animate-duration: 3s;
   color: #ee3e3e;
   // text-shadow: 0 0 4px #32003c;
-  text-shadow: 0 0 4px #efebf0;
+  text-shadow: 0 0 10px #efebf0;
 }
 .texiao {
   position: absolute;
@@ -252,13 +259,12 @@ body {
   .texiao-item {
     position: absolute;
     top: 0;
-    width: 20px;
-    height: 20px;
-    font-size: 100px;
+    // width: 50px;
+    // height: 50px;
+    font-size: 130px;
     --animate-duration: 10s;
 
     .texiao-text {
-      // --animate-duration: 3s;
     }
   }
 }
