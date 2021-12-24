@@ -34,6 +34,18 @@
       </div>
     </div>
   </div>
+  <div class="texiao">
+    <div
+      class="texiao-item animate__animated animate__fadeOutDownBig"
+      :style="{ top: item.positionTop + 'px', left: item.positionLeft + 'px' }"
+      v-for="(item, i) in texiaoList"
+      :key="i"
+    >
+      <div class="texiao-text animate__animated animate__rotateOut">
+        {{ item.name }}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -113,6 +125,31 @@ export default defineComponent({
     }
     setPageTitle()
 
+    interface toxiao {
+      name: string
+      positionTop: number
+      positionLeft: number
+    }
+    type toxiaoArray = toxiao[]
+    const texiaoList = ref<toxiaoArray>([])
+    function setTexiao() {
+      // 如果数量超过30,就移除
+      if (texiaoList.value.length > 30) {
+        texiaoList.value = texiaoList.value.slice(10)
+      }
+      const a = utils.randomNum(0, 4)
+      texiaoList.value.push({
+        name: emotions[a],
+        positionTop: utils.randomNum(-30, 0),
+        positionLeft: utils.randomNum(0, window.innerWidth - 50)
+      })
+
+      setTimeout(() => {
+        setTexiao()
+      }, 500)
+    }
+    setTexiao()
+
     // 设置背景
     function setStyleBackgroud(background: string) {
       document.body.style.background = background
@@ -140,6 +177,7 @@ export default defineComponent({
       userName,
       fullTitle,
       isShowAnimate,
+      texiaoList,
       clickToggcleClass
     }
   },
@@ -206,5 +244,22 @@ body {
   color: #ee3e3e;
   // text-shadow: 0 0 4px #32003c;
   text-shadow: 0 0 4px #efebf0;
+}
+.texiao {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  .texiao-item {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    font-size: 100px;
+    --animate-duration: 10s;
+
+    .texiao-text {
+      // --animate-duration: 3s;
+    }
+  }
 }
 </style>
