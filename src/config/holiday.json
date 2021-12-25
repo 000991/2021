@@ -1,0 +1,100 @@
+{
+  //   "holidayName": "", // 节日名称
+  //   "holidayGreetings": "快乐!", // 祝福语
+  "holidayDefaultGreetings": "快乐!", // 默认祝福语,如果节日没配置祝福语，就默认这个
+  // 礼物
+  "emotionsGifts": [
+    "🍇",
+    "🍉",
+    "🍊",
+    "🍎",
+    "🎁",
+    "🍏",
+    "🍓",
+    "🍅",
+    "🍗",
+    "🍿",
+    "🍟",
+    "🍔",
+    "🥖",
+    "🧈",
+    "🍢",
+    "🍚",
+    "🍩",
+    "🍭",
+    "🎂",
+    "😀",
+    "😆",
+    "😊",
+    "🤩",
+    "🤪",
+    "🍲",
+    "🦀",
+    "🦞",
+    "🍦",
+    "🍪",
+    "🍰",
+    "🍼",
+    "🍷",
+    "🍹",
+    "🍺"
+  ],
+  // 主题
+  "themes": [],
+  "holidayList": [
+    {
+      "id": "default",
+      "name": "默认",
+      "background": "radial-gradient(#FFF68F, #FFD700)",
+      "greetings": ""
+    },
+    {
+      "id": "Christmas Eve",
+      "name": "平安夜", // 节日名称
+      "date": "12-24", // 节日日期
+      "greetings": "", // 祝福语
+      "background": "radial-gradient(#a8e063, #56ab2f)", // 背景色
+      // 动画
+      "animation": {
+        "avatarAnimationClassName": "", // 头像动画样式
+        "avatarAnimationDuration": "", // 头像动画持续时间
+        "userNameAnimationClassName": "", // 用户名动画样式
+        "userNameAnimationDuration": "", // 用户名动画持续时间
+        "greetingsAnimationClassName": "", //祝福语动画样式
+        "greetingsAnimationDuration": "" // 祝福语动画持续时间
+      },
+      // 特效
+      "effects": {
+        "snow": true, // 开启下雪
+        "rain": false, // 开启下雨
+        "wind": false, // 开启风
+        "gifts": true, // 开启礼物
+        "sunlight": false //开启阳光
+      },
+      "showUserInfo": true // 是否显示用户头像和名称
+    },
+    {
+      "id": "Christmas",
+      "name": "圣诞",
+      "date": "12-25",
+      "background": "radial-gradient(#F08080, #FF0000)",
+      "greetings": ""
+    },
+    {
+      "id": "New Year's Day",
+      "name": "元旦",
+      "date": "1-1",
+      "background": "",
+      "holidayGreetings": ""
+    },
+    {
+      "id": "New Year",
+      "name": "新年",
+      "date": "",
+      "lunarCalendarDate": "", // 阴历日期
+      "durationDay": "10", // 持续天数
+      "background": "",
+      "holidayGreetings": ""
+    }
+  ]
+}
