@@ -63,9 +63,10 @@ export default defineComponent({
   name: 'App',
   setup() {
     const userName = utils.getQueryParam('user') || '王依寒' // 用户名
-    const text = utils.getQueryParam('text') // 从地址栏参数覆盖文字
+    // const text = utils.getQueryParam('text') // 从地址栏参数覆盖文字
     const userface = ref('')
-    userface.value = require('./assets/1.jpg')
+    userface.value =
+      utils.getQueryParam('userface') || require('./assets/1.jpg') // 用户头像
     // const bg1 = ref('')
     // bg1.value = require('./assets/33.jpg')
     // 节日信息配置
